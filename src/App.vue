@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+		<!-- 显示的是当前路由地址所对应的内容,而对应路由文件上写的是：当访问根路径时，就去访问hello word组件 -->
+    <router-view/>	<!-- 此标签自动去寻找 router>index.js -->
   </div>
 </template>
 

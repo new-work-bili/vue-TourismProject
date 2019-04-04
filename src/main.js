@@ -3,13 +3,18 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import './assets/styles/reset.css'
+import './assets/styles/border.css'
+import fastCilck from 'fastclick'
+
+fastCilck.attach(document.body)
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
+  router,		//es6语法：router:router
   components: { App },
   template: '<App/>'
 })
