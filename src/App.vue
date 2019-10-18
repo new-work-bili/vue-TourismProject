@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-		<!-- 显示的是当前路由地址所对应的内容,而对应路由文件上写的是：当访问根路径时，就去访问hello word组件 -->
-    <router-view/>	<!-- 此标签自动去寻找 router>index.js -->
+		<!-- 再次访问页面时,把json文件直接保存在内存 -->
+		<keep-alive exclude="Detail">	<!-- 表示对于Detail组件，不进行缓存 -->
+			<router-view/>	<!-- 此标签自动去寻找 router>index.js -->
+		</keep-alive>
   </div>
 </template>
 
@@ -16,7 +18,8 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  touch-action: none;
+  /* touch-action: none; */
+  /* height: 100%; */
   
 }
 </style>
