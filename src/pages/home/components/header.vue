@@ -1,6 +1,6 @@
 <template>
 	<div class="header">
-		<div class="header-left">
+		<div class="header-left" @click="back">
 			<div class="iconfont">&#xe6b7;</div>
 		</div>
     <search class="header-top" :cities="cities" :keyword="keyword" @data_keyword="data_keyword">
@@ -57,6 +57,9 @@ export default{		//定义组件名字
     },
     data_keyword(word){
       this.keyword = word
+    },
+    back(){
+      this.keyword = ''
     }
   },
   mounted() {

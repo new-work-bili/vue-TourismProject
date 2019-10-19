@@ -31,7 +31,6 @@
     },
     watch: { //监听变化
       keyword() {
-        // alert(1);
         if (this.timer) {
           clearTimeout(this.timer) //节流1
         }
