@@ -23,7 +23,8 @@ export default{
 	}
 	.back{
 		position:absolute;
-		left:0;
+		left:0.08rem;
+    font-size:.6rem;
 		color:#fff;
 	}
 </style>

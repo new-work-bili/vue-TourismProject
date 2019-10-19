@@ -14,7 +14,7 @@ try{
 
 export default new Vuex.Store({
   state:{	//调用的都是这里的数据
-	  city:localStorage.city || '北京'	//优先使用localStorage数据，找不到时，再用默认的'北京'
+	  city:localStorage.city || '北京',	//优先使用localStorage数据，找不到时，再用默认的'北京'
   },
   actions:{		//接收派发出来的action
 	  changeCity (ctx,city) {
@@ -29,7 +29,7 @@ export default new Vuex.Store({
 		  }catch(e){
 		  	//TODO handle the exception
 		  }
-		  
+
 	  }
   }
 })

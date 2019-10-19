@@ -38,9 +38,6 @@ export default{		//设置引用该组件时，该组件的名字
 			lastCity:''		//指的是上次选择的城市
 		}
 	},
-/* 	computed: {
-	  ...mapState(['city'])
-	},	 */						/* 不用这个高级用法 */
 	methods:{	//专门放方法的 
 		getHomeInfo () {
 			//请求一个url，this.$store.state.city是vuex下state保存的数据

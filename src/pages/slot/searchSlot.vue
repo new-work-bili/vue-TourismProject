@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="search">
-      <input type="text" placeholder="请输入城市名" class="search-input" v-model="keyword">
-    </div>
+    <slot></slot>
     <div class="search-content" ref="search" v-show="keyword">
       <!-- 只在keyword有值时，显示这个div -->
       <ul>
@@ -12,7 +10,6 @@
       </ul>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -21,17 +18,20 @@
   export default {
     name: 'CitySearch',
     props: {
-      cities: Object
+      cities: Object,
+      keyword:''
     },
     data() {
       return {
-        keyword: '',
         timer: null, //实现节流函数
-        list: [] //最终这里的值会是一些如{"id": 1,"spell": "beijing","name": "北京"}的数组
+        list: [], //最终这里的值会是一些如{"id": 1,"spell": "beijing","name": "北京"}的数组
+        slotClass: '',
+        data_keyword:this.keyword
       }
     },
     watch: { //监听变化
       keyword() {
+        // alert(1);
         if (this.timer) {
           clearTimeout(this.timer) //节流1
         }
@@ -53,13 +53,13 @@
           console.log('list:', this.list)
           console.log('cities:', this.cities)
         }, 100) //节流2
-
       }
     },
     methods: {
       handleCityClick(city) {
         this.$store.dispatch('changeCity', city) //派发出去一个叫changeCity的actions ，参数是city
-        this.keyword = ''
+        this.data_keyword = ''
+        this.$emit('data_keyword',this.data_keyword)
         this.$router.push('/') //通过路由来进行跳转
       }
     },
@@ -67,37 +67,17 @@
       this.scroll = new Bscroll(this.$refs.search, {
         click: true,
       }) //使用滚动插件
-
-    }
+      console.log('cities:', this.cities)
+    },
   }
 </script>
 
 <style lang="stylus" scoped="scoped">
-  .search {
-    height: .72rem;
-    padding: 0 .1rem;
-    background: #00bcd4;
-  }
-
-
-  .search-input {
-    box-sizing: border-box;
-    width: 100%;
-    height: .63rem;
-    padding: 0 .1rem;
-    line-height: .63rem;
-    text-align: center;
-    border-radius: .06rem;
-    color: #666;
-  }
-
-
-
   .search-content {
-    z-index: 1;
+    z-index: 10;
     overflow: hidden;
     position: absolute;
-    top: 1.58rem;
+    top: 0.86rem;
     left: 0;
     right: 0;
     bottom: 0;
